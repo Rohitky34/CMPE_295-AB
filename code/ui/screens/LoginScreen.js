@@ -14,7 +14,8 @@ import React from "react";
 function LoginScreen({ navigation }) {
   const [username, onChangeUsername] = React.useState("");
   const [password, onChangePassword] = React.useState("");
-  const submit = () => navigation.navigate("signup");
+  const signup = () => navigation.navigate("signup");
+  const submit = () => {};
   const forgot = () => {};
 
   return (
@@ -27,24 +28,30 @@ function LoginScreen({ navigation }) {
         <Image
           style={styles.logo}
           source={require("../assets/logo_transparent.png")}
-        ></Image>
+        />
         <Text style={styles.title}>Welcome</Text>
         <Text style={styles.subtitle}>
           The easiest and quickest way to share rides and earn Karma.
         </Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeUsername}
-          value={Text}
-          placeholder="Username"
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangePassword}
-          value={Text}
-          placeholder="Password"
-        />
-        <Pressable>
+        <View>
+          <Text style={styles.label}>Username</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeUsername}
+            value={Text}
+            // placeholder="Username"
+          />
+        </View>
+        <View>
+          <Text style={styles.label}>Password</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangePassword}
+            value={Text}
+            // placeholder="Password"
+          />
+        </View>
+        <Pressable onPress={forgot}>
           <Text style={styles.forgot}>Forgot Password?</Text>
         </Pressable>
         <View style={styles.container2}>
@@ -55,7 +62,7 @@ function LoginScreen({ navigation }) {
             accessibilityLabel="Signin to your account"
           />
           <Pressable>
-            <Text onPress={forgot} style={styles.desc}>
+            <Text onPress={signup} style={styles.desc}>
               Not a member yet? Signup here!
             </Text>
           </Pressable>
@@ -80,7 +87,8 @@ const styles = StyleSheet.create({
     textAlign: "left",
     paddingLeft: 20,
     paddingTop: 10,
-    paddingBottom: 10,
+    paddingBottom: 30,
+    color: "grey",
   },
   logo: {
     height: 250,
@@ -88,12 +96,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   input: {
-    width: "90%",
+    width: "95%",
     height: 55,
-    backgroundColor: "#fff",
+    backgroundColor: "white", // lighter blue input background color
     margin: 10,
-    padding: 20,
-    color: "white",
+    padding: 8,
+    color: "#FFFFFF",
     borderRadius: 14,
     fontSize: 18,
     fontWeight: "500",
@@ -119,6 +127,15 @@ const styles = StyleSheet.create({
     textAlign: "right",
     paddingRight: 20,
     color: "#7b8393",
+  },
+  label: {
+    color: "grey",
+    fontSize: 18,
+    fontWeight: "500",
+    textAlign: "left",
+    width: 350,
+    marginLeft: 10,
+    paddingLeft: 5,
   },
 });
 
